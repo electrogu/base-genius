@@ -1,27 +1,25 @@
 const ROOT_URL =
   process.env.NEXT_PUBLIC_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 
 /**
  * MiniApp configuration object. Must follow the Farcaster MiniApp specification.
  *
  * @see {@link https://miniapps.farcaster.xyz/docs/guides/publishing}
+ * @see {@link https://docs.base.org/mini-apps/core-concepts/manifest}
  */
 export const minikitConfig = {
-
-
-  accountAssociation: {
-    header: "eyJmaWQiOjExNDU5NTEsInR5cGUiOiJhdXRoIiwia2V5IjoiMHg2OTJENDI0RkM2NDI2NUU2QjVDMjBjQkFiMjk1Mzk5ZDQ0MzMxNTg2In0",
-    payload: "eyJkb21haW4iOiJuZXctbWluaS1hcHAtcXVpY2tzdGFydC1pdm9yeS1zaXgudmVyY2VsLmFwcCJ9",
-    signature: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6brkOez3HeZgTfZvsNhWEqluwFIWXie5CcCLVp6ttssLRnxekUJpqz4btZjVCuY659CnKXAvN5ZxdZ4MJlEjFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl8ZgIay2xclZzG8RWZzuWvO8j9R0fus3XxDee9lRlVy8dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD3eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoid0xuOGpGTGN0YTNSWUNnYjk3VmpMY3FZTURQU05RRWJwVmUxWnNJMVNQMCIsIm9yaWdpbiI6Imh0dHBzOi8va2V5cy5jb2luYmFzZS5jb20iLCJjcm9zc09yaWdpbiI6ZmFsc2UsIm90aGVyX2tleXNfY2FuX2JlX2FkZGVkX2hlcmUiOiJkbyBub3QgY29tcGFyZSBjbGllbnREYXRhSlNPTiBhZ2FpbnN0IGEgdGVtcGxhdGUuIFNlZSBodHRwczovL2dvby5nbC95YWJQZXgifQAAAAAAAAAAAA"
-  },
-
+  
+  // Paste accountAssociation object here
 
   miniapp: {
     version: "1",
     name: "Mini App Quickstart Template",
     subtitle: "Quickstart Template",
-    description: "A starter template for building Base Mini Apps using Next.js. By Trio Blockchain Labs.",
+    description:
+      "A starter template for building Base Mini Apps using Next.js. By Trio Blockchain Labs.",
     screenshotUrls: [],
     iconUrl: `${ROOT_URL}/icon.png`,
     splashImageUrl: `${ROOT_URL}/splash.png`,
@@ -33,8 +31,8 @@ export const minikitConfig = {
     heroImageUrl: `${ROOT_URL}/hero.png`,
     tagline: "Ship mini apps faster. By TriO",
     ogTitle: "Mini App Quickstart Template",
-    ogDescription: "A template for building Base Mini Apps using Next.js and TypeScript. By Trio Blockchain Labs",
+    ogDescription:
+      "A template for building Base Mini Apps using Next.js and TypeScript. By Trio Blockchain Labs",
     ogImageUrl: `${ROOT_URL}/hero.png`,
   },
 } as const;
-
