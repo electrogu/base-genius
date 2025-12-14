@@ -1,12 +1,15 @@
 'use client';
+import { useAccount } from 'wagmi';
+import MintBadgeButton from './MintBadgeButton';
+
 
 interface ResultsCardProps {
     score: number;
     totalQuestions: number;
     weekNumber: number;
-    nftMinted?: boolean;
-    nftTxHash?: string;
-    nftTokenId?: string;
+    canMint?: boolean;
+    mintSignature?: string;
+    mintError?: string;
     results: {
         questionId: number;
         correct: boolean;
@@ -21,14 +24,16 @@ export default function ResultsCard({
     score,
     totalQuestions,
     weekNumber,
-    nftMinted,
-    nftTxHash,
-    nftTokenId,
+    canMint,
+    mintSignature,
+    mintError,
     results,
     onRetry,
 }: ResultsCardProps) {
     const isPerfectScore = score === totalQuestions;
     const percentage = Math.round((score / totalQuestions) * 100);
+    const { address, isConnected } = useAccount();
+
 
     return (
         <div className="w-full max-w-2xl mx-auto p-6 space-y-6">
@@ -55,43 +60,21 @@ export default function ResultsCard({
             {isPerfectScore && (
                 <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-400 rounded-xl p-6 text-center space-y-3">
                     <div className="text-4xl">🎖️</div>
-                    {nftMinted ? (
-                        <>
-                            <h3 className="text-xl font-bold text-green-600">
-                                ✅ NFT Badge Claimed!
-                            </h3>
-                            <p className="text-gray-600">
-                                Your "Week {weekNumber} BaseGenius" badge has been minted to your wallet!
-                            </p>
-                            {nftTokenId && (
-                                <p className="text-sm font-mono text-gray-500">
-                                    Token ID: #{nftTokenId}
-                                </p>
-                            )}
-                            {nftTxHash && (
-                                <a
-                                    href={`https://sepolia.basescan.org/tx/${nftTxHash}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors"
-                                >
-                                    View Transaction on BaseScan →
-                                </a>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            <h3 className="text-xl font-bold text-gray-900">
-                                You've earned an NFT badge!
-                            </h3>
-                            <p className="text-gray-600">
-                                Connect your wallet and complete the quiz to claim your "Week {weekNumber} BaseGenius" badge on Base blockchain
-                            </p>
-                            <div className="text-sm text-gray-500 bg-blue-50 border border-blue-200 rounded-lg p-3">
-                                💡 Tip: Connect your wallet before starting the quiz to automatically receive your NFT badge!
-                            </div>
-                        </>
-                    )}
+                    <h3 className="text-xl font-bold text-gray-900">
+                        You've earned an NFT badge!
+                    </h3>
+                    <p className="text-gray-600">
+                        Claim your exclusive "Week {weekNumber} BaseGenius" badge on Base blockchain
+                    </p>
+                    <MintBadgeButton
+                        weekNumber={weekNumber}
+                        mintSignature={mintSignature}
+                        canMint={canMint || false}
+                        mintError={mintError}
+                        onMintSuccess={(txHash) => {
+                            console.log('NFT minted! Transaction:', txHash);
+                        }}
+                    />
                 </div>
             )}
 
