@@ -5,7 +5,7 @@ import type { Question } from '@/app/types/quiz';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { answers } = body; // Array of { questionId: number, selectedIndex: number }
+    const { answers, walletAddress } = body;
 
     if (!answers || !Array.isArray(answers)) {
       return NextResponse.json(
@@ -14,6 +14,7 @@ export async function POST(request: Request) {
       );
     }
 
+    // === Step 1: Validate Quiz Answers (Server-side) ===
     let correctCount = 0;
     const results = answers.map((answer: { questionId: number; selectedIndex: number }) => {
       const question = quizData.questions.find(
@@ -25,6 +26,8 @@ export async function POST(request: Request) {
           questionId: answer.questionId,
           correct: false,
           explanation: 'Question not found',
+          correctIndex: 0,
+          sourceUrl: '',
         };
       }
 
@@ -42,12 +45,17 @@ export async function POST(request: Request) {
 
     const isPerfectScore = correctCount === 5;
 
+    // NFT minting will be implemented later
+    // For now, just return the quiz results
     return NextResponse.json({
       score: correctCount,
       totalQuestions: answers.length,
       isPerfectScore,
       results,
       weekNumber: quizData.weekNumber,
+      nftMinted: false,
+      nftTxHash: '',
+      nftTokenId: '',
     });
   } catch (error) {
     console.error('Error submitting answers:', error);
