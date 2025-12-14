@@ -21,23 +21,23 @@ export const minikitConfig = {
 
   miniapp: {
     version: "1",
-    name: "Mini App Quickstart Template",
-    subtitle: "Quickstart Template",
+    name: "Base Weekly News Quiz",
+    subtitle: "Stay Updated, Earn Rewards",
     description:
-      "A starter template for building Base Mini Apps using Next.js. By Trio Blockchain Labs.",
+      "Answer 5 questions about this week's Farcaster & Base news and earn an NFT badge! New questions every week.",
     screenshotUrls: [],
     iconUrl: `${ROOT_URL}/icon.png`,
     splashImageUrl: `${ROOT_URL}/splash.png`,
-    splashBackgroundColor: "#000000",
+    splashBackgroundColor: "#0052FF",
     homeUrl: ROOT_URL,
     webhookUrl: `${ROOT_URL}/api/webhook`,
-    primaryCategory: "developer-tools",
-    tags: ["developer-tools", "productivity"],
+    primaryCategory: "games",
+    tags: ["games", "education", "news", "nft"],
     heroImageUrl: `${ROOT_URL}/hero.png`,
-    tagline: "Ship mini apps faster. By TriO",
-    ogTitle: "Mini App Quickstart Template",
+    tagline: "Test your Base knowledge, win NFT badges",
+    ogTitle: "Base Weekly News Quiz",
     ogDescription:
-      "A template for building Base Mini Apps using Next.js and TypeScript. By Trio Blockchain Labs",
+      "Answer 5 questions about Farcaster & Base news. Score 5/5 to claim an exclusive NFT badge!",
     ogImageUrl: `${ROOT_URL}/hero.png`,
   },
 } as const;
