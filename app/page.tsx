@@ -112,7 +112,7 @@ export default function Home() {
           <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
             B
           </div>
-          <span className="font-bold text-gray-900 hidden sm:block">Base Quiz</span>
+          <span className="font-bold text-gray-900 hidden sm:block">Base Genius</span>
         </div>
 
         {/* --- 2. GERÇEK CÜZDAN BAĞLANTISI BURADA --- */}

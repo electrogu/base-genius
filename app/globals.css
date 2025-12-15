@@ -1,11 +1,9 @@
 @import "tailwindcss";
 
-@layer theme {
-  :root {
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-    --color-button-text: var(--button-text);
-  }
+@theme {
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-button-text: var(--button-text);
 }
 
 @layer base {

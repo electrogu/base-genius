@@ -93,14 +93,15 @@ export default function QuizCard({ questions, weekNumber, onComplete }: QuizCard
                                 <motion.button
                                     key={index}
                                     whileTap={{ scale: 0.99 }}
-                                    onClick={() => !showFeedback && handleAnswerSelect(index)}
-                                    disabled={showFeedback}
+                                    // GÜNCELLEME: Kontrol kaldırıldı, her zaman seçilebilir
+                                    onClick={() => handleAnswerSelect(index)}
+                                    // GÜNCELLEME: disabled özelliği silindi
                                     className={`w-full group relative flex items-center justify-between p-5 rounded-2xl border-2 text-left transition-all duration-200
                                         ${isSelected 
                                             ? 'border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-200' 
                                             : 'border-gray-100 bg-white text-gray-900 hover:border-gray-300 hover:bg-gray-50'
                                         }
-                                        ${showFeedback && !isSelected ? 'opacity-50' : ''}
+                                        ${showFeedback && !isSelected ? 'opacity-50 hover:opacity-100' : ''}
                                     `}
                                 >
                                     <span className="font-bold text-lg pr-4">{option}</span>
