@@ -211,9 +211,9 @@ export default function Home() {
                 🚀 Start Quiz
               </span>
             </motion.button>
-            <p className="text-xs text-gray-400 mt-4 font-medium uppercase tracking-widest">
+            {/* <p className="text-xs text-gray-400 mt-4 font-medium uppercase tracking-widest">
               Week #42 is Live • 1,234 Players Participated
-            </p>
+            </p> */}
           </motion.div>
         </motion.div>
       )}
