@@ -21,7 +21,7 @@ export const minikitConfig = {
 
 
   miniapp: {
-    version: "1",
+    version: "2",
     name: "BaseGenius",
     subtitle: "Stay Updated, Earn Rewards",
     description:
